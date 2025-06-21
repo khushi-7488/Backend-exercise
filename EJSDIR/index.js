@@ -18,7 +18,12 @@ app.get("/rolldice",(req, res) =>{
 })
 
 app.get("/ig/:username", (req,res) => {
-    const followers = ["khushi", "mayank"]
     let {username} = req.params;
-    res.render("insta.ejs",{username, followers})
+    const instaData = require ("./data.json")
+    const data = instaData[username];
+    if(data){
+        res.render("insta.ejs",{data})
+    }else{
+        res.render("error.ejs")
+    }
 })
