@@ -5,6 +5,11 @@ const connection = mysql.createConnection({
     database: 'delta_app',
     password: 'SQL@Account'
 })
-connection.query("SHOW TABLES",(err, result)=>{
-    console.log(result);
-})
+try{
+    connection.query("SHOW TABLES",(err, result)=>{
+        if(err) throw err;
+        console.log(result);
+    })
+}catch (err){
+    console.log(err);
+}
