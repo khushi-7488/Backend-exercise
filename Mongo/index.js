@@ -12,7 +12,14 @@ async function main() {
 const userSchema = new mongoose.Schema({
     name: String,
     email: String,
-    age: Int
+    age: Number
 })
 
 const User = mongoose.model("User",userSchema);
+
+const user2 = new User({
+    name:"boby",
+    email: "bob@",
+    age: 24
+})
+user2.save();
