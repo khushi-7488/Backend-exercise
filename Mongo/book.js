@@ -11,12 +11,30 @@ async function main() {
 }
 const bookSchema = new mongoose.Schema({
     name: {
-        type: String,
+        type: String
     },
-    email: {
-        type: String,
+    author: {
+        type: String
     },
-    age: {
+    price: {
         type: Number
+    },
+    discount: {
+        type: Number,
+        default: 0
     }
+
+})
+const book = mongoose.model("book", bookSchema);
+
+const book1 = new book({
+    name: "think like a monk",
+    author: "shetty",
+    price: 1200,
+})
+
+book1.save().then(res => {
+    console.log(res)
+}).catch(err => {
+    console.log(err)
 })
